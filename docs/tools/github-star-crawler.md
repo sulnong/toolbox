@@ -37,10 +37,6 @@ pnpm start owner/repository --output results.csv
 ### 高级选项
 
 ```bash
-# 使用 GitHub token 提高速率限制
-export GITHUB_TOKEN=your_token_here
-pnpm start owner/repository
-
 # 自定义请求延迟 (毫秒)
 pnpm start owner/repository --delay 1000
 
@@ -49,13 +45,42 @@ pnpm start owner/repository --verbose
 
 # 仅统计不导出数据
 pnpm start owner/repository --stats-only
+
+# 断点续传
+pnpm start owner/repository --resume
+
+# 列出未完成任务
+pnpm start --list-tasks
+
+# 清理检查点文件
+pnpm start --cleanup
 ```
 
 ## 环境变量
 
+创建 `.env` 文件并配置以下变量：
+
+```bash
+GITHUB_TOKEN=your_github_token_here
+DEFAULT_DELAY=1000
+DEFAULT_TIMEOUT=30000
+```
+
 | 变量名 | 描述 | 必需 |
 |--------|------|------|
 | `GITHUB_TOKEN` | GitHub 个人访问令牌 | 否 (但推荐) |
+| `DEFAULT_DELAY` | 默认请求延迟 (毫秒) | 否 |
+| `DEFAULT_TIMEOUT` | 默认超时时间 (毫秒) | 否 |
+
+## 断点续传功能
+
+工具支持智能断点续传：
+
+- **自动保存**: 每处理 10 个用户自动保存进度
+- **实时写入**: 边处理边写入结果文件
+- **进度恢复**: 使用 `--resume` 选项从中断点继续
+- **任务管理**: 使用 `--list-tasks` 查看未完成任务
+- **自动清理**: 使用 `--cleanup` 清理旧的检查点文件
 
 ## 输出格式
 

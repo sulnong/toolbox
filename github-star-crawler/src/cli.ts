@@ -18,7 +18,7 @@ async function main(): Promise<void> {
     .version('1.0.0');
 
   program
-    .argument('<repository>', 'GitHub 仓库 (格式: owner/repo)')
+    .argument('[repository]', 'GitHub 仓库 (格式: owner/repo)')
     .option('-f, --format <format>', '输出格式 (csv|json)', 'csv')
     .option('-o, --output <filename>', '输出文件名')
     .option('-d, --delay <milliseconds>', '请求间隔延迟 (毫秒)', '1000')
@@ -26,6 +26,9 @@ async function main(): Promise<void> {
     .option('-v, --verbose', '详细输出')
     .option('--timeout <milliseconds>', '请求超时时间 (毫秒)', '30000')
     .option('--max-retries <count>', '最大重试次数', '3')
+    .option('--resume', '从中断点继续执行')
+    .option('--list-tasks', '列出所有未完成的任务')
+    .option('--cleanup', '清理旧的检查点文件')
     .addHelpText(
       'after',
       `
@@ -34,21 +37,45 @@ async function main(): Promise<void> {
   $ github-star-crawler facebook/react --format json
   $ github-star-crawler torvalds/linux --output linux-users.csv --verbose
   $ github-star-crawler owner/repo --stats-only
+  $ github-star-crawler owner/repo --resume          # 从断点继续
+  $ github-star-crawler --list-tasks                # 列出未完成任务
+  $ github-star-crawler --cleanup                   # 清理检查点
 
-环境变量:
-  GITHUB_TOKEN    GitHub 个人访问令牌 (推荐配置)
+环境变量配置 (.env 文件):
+  GITHUB_TOKEN=your_github_token_here     # GitHub 个人访问令牌 (推荐)
+  DEFAULT_DELAY=1000                      # 默认请求延迟 (毫秒)
+  DEFAULT_TIMEOUT=30000                   # 默认超时时间 (毫秒)
 
 合规性声明:
   • 本工具仅访问 GitHub 上的公开信息
   • 遵守 GitHub API 使用条款和速率限制
   • 尊重用户隐私设置
   • 请勿将收集的邮箱用于垃圾邮件
+  • 支持断点续传，任务中断后可恢复
 
 获取 GitHub Token:
   https://github.com/settings/tokens`
     )
     .action(async (repository, options) => {
       try {
+        // 处理特殊命令
+        if (options.listTasks) {
+          await listUnfinishedTasks();
+          return;
+        }
+
+        if (options.cleanup) {
+          await cleanupTasks();
+          return;
+        }
+
+        // 验证必需的仓库参数
+        if (!repository) {
+          console.error(chalk.red('❌ 错误: 需要指定 GitHub 仓库'));
+          program.help();
+          return;
+        }
+
         await runCrawler(repository, options);
       } catch (error: any) {
         console.error(chalk.red('❌ 错误:'), error.message);
@@ -94,10 +121,11 @@ async function runCrawler(repository: string, options: any): Promise<void> {
     throw new Error('不支持的输出格式，请使用 csv 或 json');
   }
 
-  // 检查 GitHub token
-  if (!config.token) {
-    console.log(chalk.yellow('⚠️ 未检测到 GitHub Token，API 速率限制为 60 次/小时'));
-    console.log(chalk.yellow('💡 建议配置 GITHUB_TOKEN 环境变量以获得更高限制 (5000 次/小时)'));
+  // 检查是否有未完成任务且未使用恢复选项
+  const hasUnfinished = await GitHubStarCrawler.hasUnfinishedTask(repoInfo.owner + '/' + repoInfo.name);
+  if (hasUnfinished && !options.resume) {
+    console.log(chalk.yellow('⚠️ 检测到未完成的任务'));
+    console.log(chalk.yellow('💡 使用 --resume 选项从中断点继续，或重新开始将覆盖现有进度'));
     console.log();
   }
 
@@ -110,7 +138,7 @@ async function runCrawler(repository: string, options: any): Promise<void> {
   const crawler = new GitHubStarCrawler(config);
 
   // 执行爬取
-  const result = await crawler.crawlRepository(repoInfo.owner, repoInfo.name, outputOptions);
+  const result = await crawler.crawlRepository(repoInfo.owner, repoInfo.name, outputOptions, options.resume);
 
   // 导出数据
   if (!outputOptions.statsOnly) {
@@ -152,6 +180,38 @@ if (require.main === module) {
     console.error(chalk.red('❌ 程序执行失败:'), error);
     process.exit(1);
   });
+}
+
+/**
+   * 列出未完成的任务
+   */
+async function listUnfinishedTasks(): Promise<void> {
+  const tasks = await GitHubStarCrawler.listUnfinishedTasks();
+
+  if (tasks.length === 0) {
+    console.log(chalk.green('✅ 没有未完成的任务'));
+    return;
+  }
+
+  console.log(chalk.blue('📋 未完成的任务:'));
+  for (const task of tasks) {
+    const hasCheckpoint = await GitHubStarCrawler.hasUnfinishedTask(task);
+    if (hasCheckpoint) {
+      console.log(chalk.yellow(`   • ${task}`));
+    }
+  }
+
+  console.log(chalk.gray('\n使用 --resume 选项继续任务:'));
+  console.log(chalk.gray('  github-star-crawler owner/repo --resume'));
+}
+
+/**
+   * 清理检查点
+   */
+async function cleanupTasks(): Promise<void> {
+  console.log(chalk.blue('🧹 清理检查点文件...'));
+  await GitHubStarCrawler.cleanupCheckpoints();
+  console.log(chalk.green('✅ 清理完成'));
 }
 
 export { main };

@@ -84,3 +84,29 @@ export interface CrawlerResult {
   stats: CrawlerStats;
   users: StargazerUser[];
 }
+
+/**
+ * 检查点数据接口
+ */
+export interface CheckpointData {
+  repository: string;
+  processedUsers: string[];
+  completedUsers: StargazerUser[];
+  totalStargazers: number;
+  startTime: number;
+  lastUpdateTime: number;
+  outputFormat: 'csv' | 'json';
+  outputFile?: string;
+}
+
+/**
+ * 进度状态接口
+ */
+export interface ProgressStatus {
+  current: number;
+  total: number;
+  percentage: number;
+  processed: number;
+  withEmail: number;
+  errors: number;
+}
