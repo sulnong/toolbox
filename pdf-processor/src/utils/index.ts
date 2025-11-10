@@ -1,6 +1,7 @@
 /**
  * 工具模块导出
  */
+import { Logger } from '../types';
 
 // 文件处理器
 export class FileHandler {
@@ -24,8 +25,8 @@ export class Validator {
   }
 }
 
-// 日志记录器
-export class Logger {
+// 日志记录器实现
+export class ConsoleLogger implements Logger {
   info(message: string, ...args: any[]): void {
     console.log(`[INFO] ${message}`, ...args);
   }

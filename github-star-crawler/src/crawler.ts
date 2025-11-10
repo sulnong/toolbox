@@ -180,8 +180,14 @@ export class GitHubStarCrawler {
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const filename = options.output || `${checkpoint.repository.replace('/', '-')}-${timestamp}-progress.${options.format}`;
+    const filePath = require('path').resolve(filename);
 
     try {
+      // 第一次写入时显示文件路径
+      if (checkpoint.processedUsers.length <= 10) {
+        console.log(`📁 实时写入进度到: ${filePath}`);
+      }
+
       if (options.format === 'csv') {
         await this.writeProgressCsv(checkpoint, filename);
       } else if (options.format === 'json') {
@@ -335,9 +341,6 @@ export class GitHubStarCrawler {
    * 创建默认配置
    */
   static createDefaultConfig(): CrawlerConfig {
-    // 加载环境变量
-    require('dotenv').config();
-
     return {
       token: process.env.GITHUB_TOKEN,
       delay: parseInt(process.env.DEFAULT_DELAY || '1000'),

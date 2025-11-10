@@ -1,10 +1,28 @@
 #!/usr/bin/env node
 
+// 优先加载环境变量
+require('dotenv').config();
+
 import { Command } from 'commander';
 import chalk from 'chalk';
+import * as fs from 'fs/promises';
+import * as path from 'path';
 import { GitHubStarCrawler } from './crawler';
 import { DataExporter } from './exporter';
 import { CrawlerConfig, OutputOptions } from './types';
+
+/**
+ * 确保输出目录存在
+ */
+async function ensureOutputDirectory(): Promise<string> {
+  const outputDir = './output';
+  try {
+    await fs.access(outputDir);
+  } catch {
+    await fs.mkdir(outputDir, { recursive: true });
+  }
+  return path.resolve(outputDir);
+}
 
 /**
  * 主程序入口
@@ -99,6 +117,9 @@ async function runCrawler(repository: string, options: any): Promise<void> {
     throw new Error('仓库格式错误，请使用 owner/repo 格式');
   }
 
+  // 确保输出目录存在
+  const outputDir = await ensureOutputDirectory();
+
   // 创建配置
   const config: CrawlerConfig = {
     ...GitHubStarCrawler.createDefaultConfig(),
@@ -108,10 +129,19 @@ async function runCrawler(repository: string, options: any): Promise<void> {
     verbose: options.verbose,
   };
 
+  // 显示 token 信息
+  if (config.token) {
+    console.log(chalk.green('✅ 检测到 GitHub Token，速率限制: 5000 次/小时'));
+  } else {
+    console.log(chalk.yellow('⚠️ 未检测到 GitHub Token，速率限制: 60 次/小时'));
+    console.log(chalk.gray('💡 建议在 .env 文件中配置 GITHUB_TOKEN'));
+  }
+  console.log();
+
   // 创建输出选项
   const outputOptions: OutputOptions = {
     format: options.format as 'csv' | 'json',
-    output: options.output,
+    output: options.output ? path.join(outputDir, options.output) : undefined,
     statsOnly: options.statsOnly,
     verbose: options.verbose,
   };
@@ -141,11 +171,22 @@ async function runCrawler(repository: string, options: any): Promise<void> {
   const result = await crawler.crawlRepository(repoInfo.owner, repoInfo.name, outputOptions, options.resume);
 
   // 导出数据
+  let exportedFile = null;
   if (!outputOptions.statsOnly) {
-    await DataExporter.exportToFile(result, outputOptions);
+    exportedFile = await DataExporter.exportToFile(result, outputOptions);
   } else {
     DataExporter.displayStats(result);
   }
+
+  // 显示所有生成的文件
+  if (exportedFile) {
+    console.log(chalk.blue('\\n📁 生成的文件:'));
+    console.log(chalk.gray(`   ${exportedFile}`));
+  }
+
+  // 显示输出目录
+  console.log(chalk.blue('\\n📂 输出目录:'));
+  console.log(chalk.gray(`   ${outputDir}`));
 
   // 显示完成信息
   console.log(chalk.green('\\n🎉 爬取完成！'));

@@ -33,7 +33,7 @@ export class DataExporter {
         await this.exportToJson(result, filename);
       }
 
-      console.log(`✅ 数据已导出到: ${filename}`);
+      console.log(`✅ 数据导出完成`);
       return path.resolve(filename);
     } catch (error: any) {
       console.error('❌ 导出失败:', error.message);
@@ -51,6 +51,10 @@ export class DataExporter {
       console.log('⚠️ 没有找到邮箱信息，将导出所有用户信息（邮箱字段为空）');
     }
 
+    // 显示文件路径
+    const filePath = path.resolve(filename);
+    console.log(`📁 正在导出到: ${filePath}`);
+
     // 导出所有用户，不仅仅是邮箱用户
     const csvWriter = createObjectCsvWriter({
       path: filename,
@@ -67,6 +71,16 @@ export class DataExporter {
 
     await csvWriter.writeRecords(result.users);
 
+    // 检查文件大小
+    try {
+      const fs = require('fs');
+      const stats = fs.statSync(filename);
+      const fileSize = (stats.size / 1024).toFixed(2);
+      console.log(`📁 文件已创建: ${filePath} (${fileSize} KB)`);
+    } catch (error) {
+      console.log(`📁 文件已创建: ${filePath}`);
+    }
+
     console.log(`📊 导出了 ${result.users.length} 个用户，其中 ${usersWithEmail.length} 个有邮箱地址`);
   }
 
@@ -75,6 +89,10 @@ export class DataExporter {
    */
   private static async exportToJson(result: CrawlerResult, filename: string): Promise<void> {
     const usersWithEmail = result.users.filter((user) => user.email !== null);
+
+    // 显示文件路径
+    const filePath = path.resolve(filename);
+    console.log(`📁 正在导出到: ${filePath}`);
 
     const jsonData = {
       metadata: {
@@ -89,6 +107,15 @@ export class DataExporter {
     };
 
     await fs.writeFile(filename, JSON.stringify(jsonData, null, 2));
+
+    // 检查文件大小
+    try {
+      const stats = await fs.stat(filename);
+      const fileSize = (stats.size / 1024).toFixed(2);
+      console.log(`📁 文件已创建: ${filePath} (${fileSize} KB)`);
+    } catch (error) {
+      console.log(`📁 文件已创建: ${filePath}`);
+    }
 
     console.log(`📊 导出了 ${result.users.length} 个用户，其中 ${usersWithEmail.length} 个有邮箱地址`);
   }
