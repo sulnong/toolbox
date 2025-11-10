@@ -1,0 +1,898 @@
+{
+  "parseResult": {
+    "success": true,
+    "document": {
+      "pages": [
+        {
+          "pageNumber": 1,
+          "text": "心理健康评估报告\n\n总体评估\n评估结果：正常\n描述：心理生理情绪正常\n\n心理指标\n攻击性：69.03\n压力程度：37.01\n焦虑程度：-101.83\n消沉程度：27.27\n自卑程度：-13.17\n抑郁倾向：27.03\n社交恐惧度：-21.95\n\n生理指标\n活力：21.11\n抑制：9.35\n脑活力：108.67\n\n行为指标\n平衡：70.14\n自信：81.77\n神经质：12.65\n注意力：9.7\n满意度：50.19\n调节水平：66.43",
+          "size": {
+            "width": 595,
+            "height": 842
+          },
+          "rotation": 0
+        }
+      ],
+      "metadata": {
+        "title": "心理健康评估报告",
+        "author": "系统生成",
+        "creationDate": "2023-01-01T00:00:00.000Z",
+        "version": "1.4",
+        "pageCount": 1
+      },
+      "fileInfo": {
+        "name": "test-reports.pdf",
+        "size": 3600000,
+        "format": "PDF 1.4"
+      }
+    },
+    "processingTime": 200,
+    "method": "traditional",
+    "confidence": 0.85
+  },
+  "structuredData": {
+    "code": 0,
+    "message": null,
+    "msg": null,
+    "data": {
+      "unit": "暂无单位",
+      "gender": "女",
+      "reportId": "100000182",
+      "data": {
+        "总体评估": {
+          "评估结果": "正常"
+        },
+        "心理指标": [
+          {
+            "code": "Q1",
+            "name": "攻击性",
+            "value": 69.03,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q2",
+            "name": "压力程度",
+            "value": 37.01,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q3",
+            "name": "焦虑程度",
+            "value": -101.83,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q10",
+            "name": "消沉程度",
+            "value": 27.27,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q24",
+            "name": "自卑程度",
+            "value": -13.17,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q26",
+            "name": "抑郁倾向",
+            "value": 27.03,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q27",
+            "name": "社交恐惧度",
+            "value": -21.95,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "所有指标": [
+          {
+            "code": "Q1",
+            "name": "攻击性",
+            "value": 69.03,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q2",
+            "name": "压力程度",
+            "value": 37.01,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q3",
+            "name": "焦虑程度",
+            "value": -101.83,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q10",
+            "name": "消沉程度",
+            "value": 27.27,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q24",
+            "name": "自卑程度",
+            "value": -13.17,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q26",
+            "name": "抑郁倾向",
+            "value": 27.03,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q27",
+            "name": "社交恐惧度",
+            "value": -21.95,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q6",
+            "name": "活力",
+            "value": 21.11,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q8",
+            "name": "抑制",
+            "value": 9.35,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q16",
+            "name": "脑活力",
+            "value": 108.67,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q4",
+            "name": "平衡",
+            "value": 70.14,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q5",
+            "name": "自信",
+            "value": 81.77,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q9",
+            "name": "神经质",
+            "value": 12.65,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q15",
+            "name": "注意力",
+            "value": 9.7,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q14",
+            "name": "满意度",
+            "value": 50.19,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q7",
+            "name": "调节水平",
+            "value": 66.43,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "生理指标": [
+          {
+            "code": "Q6",
+            "name": "活力",
+            "value": 21.11,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q8",
+            "name": "抑制",
+            "value": 9.35,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q16",
+            "name": "脑活力",
+            "value": 108.67,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "行为指标": [
+          {
+            "code": "Q4",
+            "name": "平衡",
+            "value": 70.14,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q5",
+            "name": "自信",
+            "value": 81.77,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q9",
+            "name": "神经质",
+            "value": 12.65,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q15",
+            "name": "注意力",
+            "value": 9.7,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q14",
+            "name": "满意度",
+            "value": 50.19,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q7",
+            "name": "调节水平",
+            "value": 66.43,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "积极情绪": 13.19,
+        "消极情绪": 0.51,
+        "中性情绪": 17.54
+      },
+      "nickname": null,
+      "avatar": null,
+      "dept": null,
+      "checkDate": null,
+      "device": null,
+      "age": null,
+      "username": null
+    }
+  }
+}

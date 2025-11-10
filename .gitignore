@@ -96,7 +96,8 @@ Thumbs.db
 
 # Tool output files
 *.csv
-*.json
+# *.json
+!settings.json
 !package.json
 !tsconfig.json
 !*.config.js

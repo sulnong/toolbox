@@ -2,21 +2,11 @@
  * 解析器模块导出
  */
 
-// 传统PDF解析器
-export class TraditionalPDFParser {
-  async parse(inputPath: string): Promise<any> {
-    throw new Error('传统PDF解析功能尚未实现');
-  }
-}
+// 导入已实现的解析器
+export { TraditionalPDFParser, ParseOptions, ParseResult, DataSchema } from './traditional-pdf-parser';
+export { AIOCRParser, AIROptions, AIResult } from './ai-ocr-parser';
 
-// AI OCR解析器
-export class AIOCRParser {
-  async parse(inputPath: string, options?: any): Promise<any> {
-    throw new Error('AI OCR解析功能尚未实现');
-  }
-}
-
-// 解析器管理器
+// 解析器管理器（待实现）
 export class ParserManager {
   async parseWithFallback(inputPath: string, options?: any): Promise<any> {
     throw new Error('解析器管理功能尚未实现');

@@ -1,0 +1,380 @@
+{
+  "parseResult": {
+    "success": true,
+    "document": {
+      "pages": [
+        {
+          "pageNumber": 1,
+          "text": "心理健康评估报告\n\n【总体评估】\n评估结果：正常\n详细描述：心理生理情绪状态评估为正常范围，无明显异常\n\n【心理指标分析】\n攻击性指标：69.03 [中等偏高]\n压力程度指数：37.01 [正常范围]\n焦虑程度得分：-101.83 [偏低]\n消沉程度测量：27.27 [正常]\n自卑程度评估：-13.17 [偏低]\n抑郁倾向检测：27.03 [轻微]\n社交恐惧度评估：-21.95 [偏低]\n\n【生理指标检测】\n活力水平：21.11 [中等]\n抑制状态：9.35 [偏低]\n脑活力指数：108.67 [偏高]\n\n【行为指标评估】\n平衡能力：70.14 [良好]\n自信水平：81.77 [优秀]\n神经质倾向：12.65 [偏低]\n注意力集中度：9.7 [需提升]\n满意度评价：50.19 [中等]\n调节水平：66.43 [良好]",
+          "confidence": 0.94,
+          "boundingBoxes": [
+            {
+              "text": "心理健康评估报告",
+              "x": 200,
+              "y": 50,
+              "width": 200,
+              "height": 30,
+              "confidence": 0.98
+            },
+            {
+              "text": "攻击性：69.03",
+              "x": 100,
+              "y": 200,
+              "width": 120,
+              "height": 20,
+              "confidence": 0.96
+            }
+          ],
+          "structuredData": {
+            "indicators": [
+              {
+                "name": "攻击性",
+                "value": 69.03,
+                "category": "心理指标",
+                "confidence": 0.96
+              },
+              {
+                "name": "压力程度",
+                "value": 37.01,
+                "category": "心理指标",
+                "confidence": 0.94
+              },
+              {
+                "name": "焦虑程度",
+                "value": -101.83,
+                "category": "心理指标",
+                "confidence": 0.95
+              },
+              {
+                "name": "活力",
+                "value": 21.11,
+                "category": "生理指标",
+                "confidence": 0.93
+              },
+              {
+                "name": "自信",
+                "value": 81.77,
+                "category": "行为指标",
+                "confidence": 0.97
+              }
+            ]
+          }
+        }
+      ],
+      "aiMetadata": {
+        "model": "qwen-vl-ocr",
+        "endpoint": "https://aiproxy.hzh.sealos.run",
+        "processingTime": 800,
+        "totalConfidence": 0.94,
+        "ocrAccuracy": 0.96
+      }
+    },
+    "processingTime": 800,
+    "method": "ai-ocr",
+    "confidence": 0.94
+  },
+  "structuredData": {
+    "code": 0,
+    "message": null,
+    "msg": null,
+    "data": {
+      "unit": "暂无单位",
+      "gender": "女",
+      "reportId": "100000182",
+      "data": {
+        "心理指标": [
+          {
+            "code": "Q1",
+            "name": "攻击性",
+            "value": 69.03,
+            "confidence": 0.96,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q2",
+            "name": "压力程度",
+            "value": 37.01,
+            "confidence": 0.94,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q3",
+            "name": "焦虑程度",
+            "value": -101.83,
+            "confidence": 0.95,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "生理指标": [
+          {
+            "code": "Q6",
+            "name": "活力",
+            "value": 21.11,
+            "confidence": 0.93,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "行为指标": [
+          {
+            "code": "Q5",
+            "name": "自信",
+            "value": 81.77,
+            "confidence": 0.97,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "所有指标": [
+          {
+            "code": "Q1",
+            "name": "攻击性",
+            "value": 69.03,
+            "confidence": 0.96,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q2",
+            "name": "压力程度",
+            "value": 37.01,
+            "confidence": 0.94,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q3",
+            "name": "焦虑程度",
+            "value": -101.83,
+            "confidence": 0.95,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q6",
+            "name": "活力",
+            "value": 21.11,
+            "confidence": 0.93,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          },
+          {
+            "code": "Q5",
+            "name": "自信",
+            "value": 81.77,
+            "confidence": 0.97,
+            "min": 0,
+            "max": 100,
+            "std": 0,
+            "referenceRange": "10-70",
+            "ranges": [
+              {
+                "min": 0,
+                "max": 30,
+                "level": "低"
+              },
+              {
+                "min": 30,
+                "max": 70,
+                "level": "中"
+              },
+              {
+                "min": 70,
+                "max": 100,
+                "level": "高"
+              }
+            ]
+          }
+        ],
+        "总体评估": {
+          "评估结果": "正常",
+          "详细描述": "心理生理情绪状态评估为正常范围，无明显异常"
+        },
+        "积极情绪": 14.5,
+        "消极情绪": 0.3,
+        "中性情绪": 16.8
+      },
+      "nickname": null,
+      "avatar": null,
+      "dept": null,
+      "checkDate": null,
+      "device": null,
+      "age": null,
+      "username": null
+    }
+  }
+}

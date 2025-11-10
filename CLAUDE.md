@@ -15,9 +15,6 @@
 
 请保持此管理块，以便 'openspec update' 可以刷新指令。
 
-## 项目宪法
-所有回复均使用中文
-
 ## 快速参考（中文）
 
 ### 创建变更提案流程
@@ -62,7 +59,12 @@ openspec validate [change-id] --strict
 - 场景格式：`#### Scenario: 场景名称`（4个#号）
 - 需求措辞：使用 SHALL/MUST 表示规范性要求
 
-## 技术栈偏好
+<!-- OPENSPEC:END -->
+
+# 项目宪法
+所有回复均使用中文
+
+# 技术栈偏好
 
 ### 优先技术栈
 - **后端运行时**: Node.js
@@ -83,4 +85,3 @@ openspec validate [change-id] --strict
 - Git hooks进行代码质量检查
 - 完整的测试覆盖率要求
 
-<!-- OPENSPEC:END -->

@@ -1,5 +1,8 @@
-## ADDED Requirements
+# github-crawler Specification
 
+## Purpose
+TBD - created by archiving change add-github-star-crawler. Update Purpose after archive.
+## Requirements
 ### Requirement: GitHub API Integration
 The tool SHALL use GitHub's official REST API to fetch stargazer information for public repositories.
 
@@ -89,3 +92,4 @@ The tool SHALL support flexible configuration through environment variables and 
 #### Scenario: Performance tuning
 - **WHEN** adjusting performance parameters
 - **THEN** the tool SHALL provide options for concurrency and request delays
+

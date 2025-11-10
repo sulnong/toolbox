@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "document": {
+    "pages": [
+      {
+        "pageNumber": 1,
+        "size": {
+          "width": 595,
+          "height": 842
+        },
+        "rotation": 0,
+        "text": "心理健康评估报告\n\n总体评估\n评估结果：正常\n描述：心理生理情绪正常\n\n心理指标\n攻击性：69.03\n压力程度：37.01\n焦虑程度：-101.83\n..."
+      }
+    ],
+    "metadata": {
+      "title": "心理健康评估报告",
+      "author": "系统生成",
+      "creationDate": "2025-11-10T09:39:52.831Z",
+      "version": "1.4",
+      "isEncrypted": false
+    },
+    "fileInfo": {
+      "name": "test-reports.pdf",
+      "path": "/home/sunlong/workspace/toolbox/pdf-processor/test-reports.pdf",
+      "size": 3611756,
+      "format": "pdf"
+    }
+  },
+  "processingTime": 800
+}

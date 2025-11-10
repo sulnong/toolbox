@@ -1,3 +1,7 @@
+// 优先加载环境变量
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { GitHubClient } from './github-client';
 import { EmailExtractor } from './email-extractor';
 import { CheckpointManager } from './checkpoint-manager';
@@ -49,25 +53,32 @@ export class GitHubStarCrawler {
         }
       }
 
-      // 如果没有检查点或不恢复，则从头开始
-      if (!checkpoint) {
-        const stargazers = await this.client.getStargazers(owner, repo);
-        if (stargazers.length === 0) {
+      // 获取所有star用户列表
+      let allStargazers: string[];
+      if (checkpoint && checkpoint.processedUsers.length > 0) {
+        // 从检查点恢复时，重新获取完整列表
+        allStargazers = await this.client.getStargazers(owner, repo);
+      } else {
+        // 首次运行
+        allStargazers = await this.client.getStargazers(owner, repo);
+        if (allStargazers.length === 0) {
           console.log('📝 该仓库暂无 star 用户');
           return this.createEmptyResult(owner, repo, startTime);
         }
 
-        console.log(`📋 发现 ${stargazers.length} 个 star 用户`);
-        checkpoint = CheckpointManager.createInitialCheckpoint(
-          repository,
-          stargazers.length,
-          options.format,
-          options.output
-        );
+        console.log(`📋 发现 ${allStargazers.length} 个 star 用户`);
+
+        if (!checkpoint) {
+          checkpoint = CheckpointManager.createInitialCheckpoint(
+            repository,
+            allStargazers.length,
+            options.format,
+            options.output
+          );
+        }
       }
 
       // 获取待处理的用户列表
-      const allStargazers = await this.client.getStargazers(owner, repo);
       const remainingUsers = allStargazers.filter(
         (username) => !checkpoint!.processedUsers.includes(username)
       );
@@ -117,7 +128,7 @@ export class GitHubStarCrawler {
     checkpoint: CheckpointData,
     options: OutputOptions
   ): Promise<void> {
-    const batchSize = 10; // 每处理 10 个用户保存一次检查点
+    const batchSize = 20; // 每处理 20 个用户保存一次检查点，减少IO频率
     let processedInBatch = 0;
 
     for (let i = 0; i < usernames.length; i++) {
@@ -156,9 +167,9 @@ export class GitHubStarCrawler {
           processedInBatch = 0;
         }
 
-        // 添加延迟
+        // 添加延迟 - 使用更小的延迟以提高性能
         if (this.config.delay > 0 && i < usernames.length - 1) {
-          await this.sleep(this.config.delay);
+          await this.sleep(Math.min(this.config.delay, 100)); // 最大100ms延迟
         }
       } catch (error: any) {
         console.warn(`⚠️ 处理用户 ${username} 失败:`, error.message);
@@ -180,7 +191,8 @@ export class GitHubStarCrawler {
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const filename = options.output || `${checkpoint.repository.replace('/', '-')}-${timestamp}-progress.${options.format}`;
-    const filePath = require('path').resolve(filename);
+    // 确保文件保存在output目录下
+    const filePath = require('path').resolve('output', filename);
 
     try {
       // 第一次写入时显示文件路径
