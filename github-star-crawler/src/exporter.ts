@@ -16,6 +16,12 @@ export class DataExporter {
       return null;
     }
 
+    // 检查是否有数据可导出
+    if (result.users.length === 0) {
+      console.log('⚠️ 没有数据可导出');
+      return null;
+    }
+
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const defaultFilename = `${result.stats.repository.replace('/', '-')}-${timestamp}`;
     const filename = options.output || `${defaultFilename}.${options.format}`;
@@ -42,10 +48,10 @@ export class DataExporter {
     const usersWithEmail = result.users.filter((user) => user.email !== null);
 
     if (usersWithEmail.length === 0) {
-      console.log('⚠️ 没有找到邮箱信息，无法导出 CSV');
-      return;
+      console.log('⚠️ 没有找到邮箱信息，将导出所有用户信息（邮箱字段为空）');
     }
 
+    // 导出所有用户，不仅仅是邮箱用户
     const csvWriter = createObjectCsvWriter({
       path: filename,
       header: [
@@ -59,13 +65,17 @@ export class DataExporter {
       ],
     });
 
-    await csvWriter.writeRecords(usersWithEmail);
+    await csvWriter.writeRecords(result.users);
+
+    console.log(`📊 导出了 ${result.users.length} 个用户，其中 ${usersWithEmail.length} 个有邮箱地址`);
   }
 
   /**
    * 导出为 JSON 格式
    */
   private static async exportToJson(result: CrawlerResult, filename: string): Promise<void> {
+    const usersWithEmail = result.users.filter((user) => user.email !== null);
+
     const jsonData = {
       metadata: {
         repository: result.stats.repository,
@@ -73,11 +83,14 @@ export class DataExporter {
         totalStargazers: result.stats.totalStargazers,
         usersWithEmail: result.stats.usersWithEmail,
         processingTime: result.stats.processingTime,
+        note: usersWithEmail.length === 0 ? '大多数 GitHub 用户不会公开邮箱地址，这是正常现象' : undefined,
       },
-      users: result.users.filter((user) => user.email !== null),
+      users: result.users, // 导出所有用户
     };
 
     await fs.writeFile(filename, JSON.stringify(jsonData, null, 2));
+
+    console.log(`📊 导出了 ${result.users.length} 个用户，其中 ${usersWithEmail.length} 个有邮箱地址`);
   }
 
   /**
