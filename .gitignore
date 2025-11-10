@@ -105,8 +105,6 @@ Thumbs.db
 token.txt
 .github-token
 
-# Claude files
-.claude/
 
 # OpenSpec generated archives
 openspec/changes/archive/
